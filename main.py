@@ -17,9 +17,9 @@ async def unload(ctx, extension):
   client.unload_extension(f'cog.{extension}')
 
 
-for nome in os.listdir('./cog'):
+for filename in os.listdir('./cog'):
   if nome.endswith('.py'):
-   client.load_extension(f'cog.{nome[:-3]}')
+   client.load_extension(f'cog.{filename[:-3]}')
 
 
 client.run('TOKEN_DO_SEU_BOT')
