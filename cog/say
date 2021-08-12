@@ -1,0 +1,26 @@
+import discord
+from discord.ext import commands
+
+# criando uma classe, ela aparece no comando !help
+class utilidades(commands.Cog):
+    def __init__(self, client):
+      self.client = client
+
+    @commands.command()
+    async def say(self, ctx, palavra: str=None):
+    # após o ' async def ' fica o nome do comando
+    # agora você só precisa colocar o código do comando, eu vou fazer um bem simples de say
+    if palavra is None:
+     return await ctx.send('Escreva algo para eu falar!')
+    # aqui está verificando se o autor do comando esreveu algo após o comando
+
+    else:
+      await ctx.send(f'{palavra}\n\nMensagem enviada por: {ctx.author.mention}')
+      # caso o autor tenha colocado algo após o comando, o bot vai retornar o que ele escreveu
+      # recomendo deixar o ' mensagem enviada por: ' para não ter o risco de alguém abusar do comando
+      # e der merda no seu bot
+
+
+def setup(client):
+  # aqui estamos adicionando a class ao client
+  client.add_cog(utilidades(client))
